@@ -1,0 +1,27 @@
+---
+import Socila from "./Socila.astro";
+
+const platform = [
+	{
+		"platform": "github",
+		"username": "sonho463"
+	},
+	{
+		"platform": "twitter",
+		"username": "horumont"
+	}
+]
+---
+
+<footer class="footer">
+  <ul>
+    Learn more about my projects on
+
+		{
+			platform.map((el)=>(
+					<Socila
+					platform={el.platform} username={el.username} />
+			))
+		}
+  </ul>
+</footer>
