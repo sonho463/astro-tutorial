@@ -83,3 +83,12 @@ h1 {
 	}
 
 }
+
+.dark body {
+  background-color: #0d0950;
+  color: #fff;
+}
+
+.dark .nav-links a {
+  color: #fff;
+}
