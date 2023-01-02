@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const pageTitle='My Works'
+
+//microCMS呼び出し
+import { getWorks } from "../library/microcms";
+const response = await getWorks({ fields: ["id", "works-title", "works-desc","works-tag"] });
+console.log(typeof(response))
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <main>
+    <ul>
+      {
+        response.contents.map((content: any) => (
+          <li>
+            <a href={content.id}>{content['works-title']}</a>
+						<span>{content['works-tag'].name}</span>
+						<span>{content['works-desc']}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</BaseLayout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1em;
+    max-width: 60ch;
+  }
+</style>
