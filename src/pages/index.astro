@@ -1,9 +1,102 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Greeting from '../components/Greeting.jsx';
-const pageTitle= "Home Page";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Greeting from "../components/Greeting.jsx";
+const pageTitle = "HomePage";
 ---
+
 <BaseLayout pageTitle={pageTitle}>
-  <h2>ほるもんTのAstroBlogです</h2>
-	<Greeting client:load messages={["Hi", "Hello", "Howdy", "Hey there"]} />
+  <div class="wrapper">
+    <div class="l-hero">
+      <div class="l-hero-wrapper" id="wrapper">
+        <div class="l-hero-panel l-hero-panel-01 panel" id="panel01">
+          <p class="l-hero-panel__contents">Panel 1/4</p>
+        </div>
+        <div class="l-hero-panel l-hero-panel-02 panel" id="panel02">
+          <p class="l-hero-panel__contents">Panel 2/4</p>
+        </div>
+        <div class="l-hero-panel l-hero-panel-03 panel" id="panel03">
+          <p class="l-hero-panel__contents">Panel 3/4</p>
+        </div>
+        <div class="l-hero-panel l-hero-panel-04 panel" id="panel04">
+          <p class="l-hero-panel__contents">Panel 4/4</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </BaseLayout>
+
+<style>
+
+	.wrapper {
+  width: 100vw;
+  height: 100vh;
+  /* overflow-y: hidden; */
+}
+
+.l-hero {
+  overflow: hidden;
+  position: relative;
+}
+.l-hero .l-hero-wrapper {
+  width: 400%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: nowrap;
+  will-change: auto;
+}
+.l-hero .l-hero-panel {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.l-hero .l-hero-panel-01 {
+  background-image: url("https://source.unsplash.com/KU1DYLV3tQE");
+}
+.l-hero .l-hero-panel-02 {
+  background-image: url("https://source.unsplash.com/RfH5sOHTOek");
+}
+.l-hero .l-hero-panel-03 {
+  background-image: url("https://source.unsplash.com/uOcQUMXaUz8");
+}
+.l-hero .l-hero-panel-04 {
+  background-image: url("https://source.unsplash.com/aYLTPUkGZ-8");
+}
+
+.l-hero .l-hero-panel::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.l-hero .l-hero-panel__contents {
+  flex: 0 0 100%;
+  text-align: center;
+  font-weight: 700;
+  color: #fff;
+  font-size: 24px;
+  position: relative;
+  text-transform: uppercase;
+  z-index: 3;
+}
+@media all and (min-width: 1280px) {
+  .l-hero-panel__contents {
+    font-size: 36px;
+  }
+}
+
+</style>
+
+<script>
+	import "../scripts/gsap.js"
+</script>
